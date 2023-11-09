@@ -127,10 +127,7 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     0     => 0
  */
 function getLastDigit(num) {
-  const str = String(num);
-  const arr = str.split('');
-  const lastDigit = arr[arr.length - 1];
-  return Number(lastDigit);
+  return num % 10;
 }
 /**
  * Returns a number by given string representation.
@@ -414,8 +411,8 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(value) {
+  return typeof value === 'number' && Number.isFinite(value);
 }
 
 /**
@@ -597,9 +594,9 @@ function getRandomInteger(/* min, max */) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  const c = Math.sqrt((a / 2) * (a / 2) + (b / 2) * (b / 2)) * 2;
-  return c;
+  return Math.hypot(a, b);
 }
+
 /**
  * Returns count of odd numbers from zero to the resulting number.
  * The resulting number is taken into account.
